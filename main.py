@@ -4,13 +4,17 @@ import seaborn as sns
 
 notas = pd.read_csv("./ml-latest-small/ratings.csv")
 filmes = pd.read_csv("./ml-latest-small/movies.csv")
+tmdb = pd.read_csv("./ml-latest-small/tmdb_5000_movies.csv")
 notas.columns = ['usuarioId', 'filmeId', 'nota', 'momento']
 filmes.columns = ['filmeId', 'titulo', 'generos']
 
 print(notas.head())
 print(filmes.head())
+print(tmdb.head())
 
-notas.nota.describe()
+print(tmdb.vote_average.unique())
+
+print(notas.nota.describe())
 
 notas.nota.plot(kind='hist')
 plt.show()
@@ -23,4 +27,5 @@ plt.show()
 
 sns.boxplot(y=medias_por_filme)
 plt.show()
+
 

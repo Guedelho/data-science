@@ -28,4 +28,29 @@ plt.show()
 sns.boxplot(y=medias_por_filme)
 plt.show()
 
+contagem_de_lingua = tmdb["original_language"].value_counts().to_frame().reset_index()
+contagem_de_lingua.columns = ["original_language", "total"]
+
+print(contagem_de_lingua.head())
+
+sns.barplot(data=contagem_de_lingua.head(), x="original_language", y="total")
+plt.show()
+
+total_lingua = tmdb["original_language"].value_counts()
+total_geral = total_lingua.sum()
+total_ingles = total_lingua["en"]
+total_resto = total_geral - total_ingles
+
+dados = {
+    "lingua": ["ingles", "outros"],
+    "total": [total_ingles, total_resto]
+}
+dados = pd.DataFrame(dados)
+
+sns.barplot(data=dados, x="lingua", y="total")
+plt.show()
+
+filmes_em_outros_idiomas = tmdb.query("original_language != 'en'")
+sns.catplot(data=filmes_em_outros_idiomas, x="original_language", kind="count")
+plt.show()
 

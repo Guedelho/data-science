@@ -51,6 +51,20 @@ sns.barplot(data=dados, x="lingua", y="total")
 plt.show()
 
 filmes_em_outros_idiomas = tmdb.query("original_language != 'en'")
-sns.catplot(data=filmes_em_outros_idiomas, x="original_language", kind="count")
+contador_filmes_em_outros_idiomas = filmes_em_outros_idiomas.original_language.value_counts()
+sns.catplot(data=filmes_em_outros_idiomas,
+            x="original_language",
+            kind="count",
+            palette="GnBu_d",
+            order=contador_filmes_em_outros_idiomas.index,
+            aspect=2)
+plt.show()
+
+sns.set(style="ticks")
+df = sns.load_dataset("anscombe")
+
+sns.lmplot(x="x", y="y", col="dataset", hue="dataset", data=df,
+           col_wrap=2, ci=None, palette="muted", height=4,
+           scatter_kws={"s": 50, "alpha": 1})
 plt.show()
 

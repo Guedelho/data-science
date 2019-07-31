@@ -68,3 +68,16 @@ sns.lmplot(x="x", y="y", col="dataset", hue="dataset", data=df,
            scatter_kws={"s": 50, "alpha": 1})
 plt.show()
 
+notas_toy_story = notas.query("filmeId == 1")
+notas_jumanji = notas.query("filmeId == 2")
+
+print(len(notas_toy_story), len(notas_jumanji))
+
+print("Média Toy Story %.2f" % notas_toy_story['nota'].mean())
+print("Média Jumanji %.2f" % notas_jumanji['nota'].mean())
+print("Desvio padrão Toy Story %.2f" % notas_toy_story['nota'].std())
+print("Desvio padrão %.2f" % notas_jumanji['nota'].std())
+print("Mediana Toy Story %.2f" % notas_toy_story['nota'].median())
+print("Mediana Jumanji %.2f" % notas_jumanji['nota'].median())
+
+
